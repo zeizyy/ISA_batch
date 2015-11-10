@@ -11,10 +11,11 @@ initial = {'description': 'initial', 'creator_id': 1, 'location': 'initial', 'st
 try:
 	producer.send_messages(b'event', json.dumps(initial).encode('utf-8'))
 except:
-	time.sleep(3)
+	time.sleep(2)
 	producer.send_messages(b'event', json.dumps(initial).encode('utf-8'))
 
 es = Elasticsearch(['es'])
+time.sleep(2)
 
 for message in consumer:
 	event = json.loads(message.value.decode('utf8'))
