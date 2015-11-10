@@ -12,7 +12,7 @@ try:
 	producer.send_messages(b'event', json.dumps(initial).encode('utf-8'))
 except:
 	time.sleep(3)
-	producer.send_messages(b'event', json.dumps("").encode('utf-8'))
+	producer.send_messages(b'event', json.dumps(initial).encode('utf-8'))
 
 es = Elasticsearch(['es'])
 for message in consumer:
