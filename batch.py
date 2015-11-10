@@ -7,7 +7,7 @@ from elasticsearch import Elasticsearch
 consumer = KafkaConsumer('event', group_id='listing-indexer', bootstrap_servers=['kafka:9092'])
 kafka = KafkaClient('kafka:9092')
 producer = SimpleProducer(kafka)
-initial = {}
+initial = {'initial':'initial'}
 try:
 	producer.send_messages(b'event', json.dumps(initial).encode('utf-8'))
 except:
