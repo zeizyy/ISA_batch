@@ -15,7 +15,7 @@ except:
 	producer.send_messages(b'event', json.dumps(initial).encode('utf-8'))
 
 es = Elasticsearch(['es'])
-time.sleep(2)
+time.sleep(10)
 
 for message in consumer:
 	event = json.loads(message.value.decode('utf8'))
