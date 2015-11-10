@@ -17,6 +17,8 @@ except:
 es = Elasticsearch(['es'])
 for message in consumer:
 	event = json.loads(message.value.decode('utf8'))
+	if 'initial' in event:
+		pass
 	if event:
 		es.index(index='listing_index', doc_type='listing', id=event['event_id'],body=event)
 		print(event," added to es!")
