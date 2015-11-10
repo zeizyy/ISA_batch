@@ -1,4 +1,5 @@
 import json
+import time
 from kafka import KafkaConsumer, SimpleProducer, KafkaClient
 
 from elasticsearch import Elasticsearch
