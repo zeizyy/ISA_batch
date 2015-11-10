@@ -7,8 +7,9 @@ from elasticsearch import Elasticsearch
 consumer = KafkaConsumer('event', group_id='listing-indexer', bootstrap_servers=['kafka:9092'])
 kafka = KafkaClient('kafka:9092')
 producer = SimpleProducer(kafka)
+initial = {'start_time': 'initial', 'creator_id': -1, 'location': 'initial', 'description': 'initial', 'event_id': -1, 'firstname': 'initial', 'name': 'initial', 'lastname': 'initial'}
 try:
-	producer.send_messages(b'event', json.dumps("").encode('utf-8'))
+	producer.send_messages(b'event', json.dumps(initial).encode('utf-8'))
 except:
 	time.sleep(3)
 	producer.send_messages(b'event', json.dumps("").encode('utf-8'))
