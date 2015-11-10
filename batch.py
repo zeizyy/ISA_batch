@@ -4,6 +4,7 @@ from kafka import KafkaConsumer, SimpleProducer, KafkaClient
 from elasticsearch import Elasticsearch
 
 consumer = KafkaConsumer('event', group_id='listing-indexer', bootstrap_servers=['kafka:9092'])
+kafka = KafkaClient('kafka:9092')
 producer = SimpleProducer(kafka)
 try:
 	producer.send_messages(b'event', json.dumps("").encode('utf-8'))
